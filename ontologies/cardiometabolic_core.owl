@@ -26,6 +26,31 @@
         <rdfs:subClassOf rdf:resource="#Medication"/>
     </owl:Class>
 
+    <!-- Declaration of Lisinopril as Medication -->
+    <owl:Class rdf:about="#Lisinopril">
+        <rdfs:subClassOf rdf:resource="#Medication"/>
+    </owl:Class>
+
+    <!-- Axiom: Unsafe ACE-inhibitor prescription in CKD Stage 4/5 -->
+    <owl:Class rdf:about="#UnsafeACEiPrescription">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Patient"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasCondition"/>
+                        <owl:someValuesFrom rdf:resource="#CKD_Stage_4_5"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasPrescribedDrug"/>
+                        <owl:someValuesFrom rdf:resource="#Lisinopril"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment>Lisinopril/ACE-i carries severe hyperkalemia and acute renal failure risks in Stage 4/5 CKD.</rdfs:comment>
+    </owl:Class>
+    
     <!-- Contraindicated Patient Class (Axiom Definition) -->
     <!-- A patient with CKD Stage 4/5 taking Metformin violates safety rules -->
     <owl:Class rdf:about="#UnsafeMetforminPrescription">
