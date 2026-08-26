@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/safecds/cardiometabolic#"
+     xml:base="http://www.semanticweb.org/safecds/cardiometabolic"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    
+    <owl:Ontology rdf:about="http://www.semanticweb.org/safecds/cardiometabolic"/>
+
+    <!-- Object Properties -->
+    <owl:ObjectProperty rdf:about="#hasCondition"/>
+    <owl:ObjectProperty rdf:about="#hasPrescribedDrug"/>
+
+    <!-- Clinical Classes -->
+    <owl:Class rdf:about="#Patient"/>
+    <owl:Class rdf:about="#Condition"/>
+    <owl:Class rdf:about="#Medication"/>
+
+    <owl:Class rdf:about="#CKD_Stage_4_5">
+        <rdfs:subClassOf rdf:resource="#Condition"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Metformin">
+        <rdfs:subClassOf rdf:resource="#Medication"/>
+    </owl:Class>
+
+    <!-- Contraindicated Patient Class (Axiom Definition) -->
+    <!-- A patient with CKD Stage 4/5 taking Metformin violates safety rules -->
+    <owl:Class rdf:about="#UnsafeMetforminPrescription">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Patient"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasCondition"/>
+                        <owl:someValuesFrom rdf:resource="#CKD_Stage_4_5"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasPrescribedDrug"/>
+                        <owl:someValuesFrom rdf:resource="#Metformin"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+
+</rdf:RDF>
