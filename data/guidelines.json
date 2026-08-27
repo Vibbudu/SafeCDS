@@ -18,9 +18,15 @@
     "text": "In patients with Type 2 Diabetes and severe CKD Stage 4 or 5 where oral antidiabetic agents like Metformin and SGLT2 inhibitors are contraindicated or insufficient, Insulin therapy (basal or prandial regimens) is safe and effective. Dose adjustments are necessary to prevent hypoglycemia due to reduced renal clearance of insulin."
   },
   {
-    "id": "AHA_ACC_HF_2022_04",
-    "source": "AHA/ACC/HFSA Heart Failure Guidelines",
-    "topic": "Beta-Blockers in Heart Failure and Bradycardia",
-    "text": "Beta-blockers (such as Metoprolol Succinate, Carvedilol, or Bisoprolol) are indicated in Heart Failure with reduced ejection fraction (HFrEF). However, beta-blockers are contraindicated in severe sinus bradycardia (heart rate < 50 bpm), second/third-degree AV block, and acute decompensated severe asthma."
+    "id": "ADA_GLY_2024_FIRST_LINE",
+    "source": "ADA Standards of Medical Care in Diabetes 2024",
+    "topic": "First-Line Glycemic Therapy in Type 2 Diabetes",
+    "text": "First-line therapy for Type 2 Diabetes with normal renal function or early-stage disease consists of Metformin along with comprehensive lifestyle modification. Metformin provides high glycemic efficacy, low risk of hypoglycemia, and weight neutrality."
+  },
+  {
+    "id": "ACC_AHA_HTN_2023_FIRST_LINE",
+    "source": "ACC/AHA Guideline for the Prevention and Management of High Blood Pressure",
+    "topic": "First-Line Antihypertensive Therapy",
+    "text": "For initial management of uncomplicated primary hypertension in patients with normal kidney function, first-line classes include ACE inhibitors (such as Lisinopril), Angiotensin Receptor Blockers (ARBs), or Calcium Channel Blockers (such as Amlodipine)."
   }
 ]

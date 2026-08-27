@@ -22,10 +22,11 @@ class LLMClinicalAgent:
             ("system", 
              "You are a clinical decision support assistant specialized in cardiometabolic multi-morbidity.\n"
              "Analyze the patient's conditions and relevant clinical guideline excerpts to select the safest medication.\n"
-             "Strictly adhere to the provided clinical guidelines and all ontological feedback constraints."),
+             "CRITICAL: Base your reasoning ONLY on the patient's listed Known Conditions. Do not assume or hallucinate conditions (like CKD) if they are not explicitly in the patient's record.\n"
+             "Strictly adhere to clinical guidelines and all ontological feedback constraints."),
             ("human", 
              "Patient ID: {patient_id}\n"
-             "Known Conditions: {conditions}\n\n"
+             "Explicitly Diagnosed Conditions: {conditions}\n\n"
              "Clinical Guidelines & Evidence:\n{guidelines}\n\n"
              "Previous Safety Violations/Constraints:\n{violations}\n\n"
              "Provide your clinical rationale and proposed medication.")

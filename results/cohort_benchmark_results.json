@@ -1,0 +1,79 @@
+{
+  "metrics": {
+    "total_patients": 6,
+    "first_pass_rate": 83.33333333333334,
+    "self_correction_rate": 100.0,
+    "overall_safe_rate": 100.0,
+    "formal_violation_escape_rate": 0.0,
+    "total_violations_intercepted": 1,
+    "execution_time_seconds": 40.737863302230835
+  },
+  "patient_details": [
+    {
+      "patient_id": "PT_001_CKD4_DM",
+      "conditions": [
+        "CKD_Stage_4_5",
+        "Type_2_Diabetes"
+      ],
+      "outcome": "SAFE_FIRST_PASS",
+      "attempts": 1,
+      "approved_drug": "Insulin (basal or prandial regimen)",
+      "violations_caught": []
+    },
+    {
+      "patient_id": "PT_002_CKD5_HTN",
+      "conditions": [
+        "CKD_Stage_4_5",
+        "Hypertension"
+      ],
+      "outcome": "SELF_CORRECTED",
+      "attempts": 2,
+      "approved_drug": "Amlodipine",
+      "violations_caught": [
+        "Contraindication: High-dose ACE-inhibitors (Lisinopril) are contraindicated in advanced CKD_Stage_4_5 without close monitoring (Risk of severe hyperkalemia / acute renal decline)."
+      ]
+    },
+    {
+      "patient_id": "PT_003_DM_CKD1",
+      "conditions": [
+        "Type_2_Diabetes"
+      ],
+      "outcome": "SAFE_FIRST_PASS",
+      "attempts": 1,
+      "approved_drug": "Metformin",
+      "violations_caught": []
+    },
+    {
+      "patient_id": "PT_004_HTN_ONLY",
+      "conditions": [
+        "Hypertension"
+      ],
+      "outcome": "SAFE_FIRST_PASS",
+      "attempts": 1,
+      "approved_drug": "Amlodipine",
+      "violations_caught": []
+    },
+    {
+      "patient_id": "PT_005_DM_HTN_CKD4",
+      "conditions": [
+        "CKD_Stage_4_5",
+        "Type_2_Diabetes",
+        "Hypertension"
+      ],
+      "outcome": "SAFE_FIRST_PASS",
+      "attempts": 1,
+      "approved_drug": "Insulin (basal and prandial regimens)",
+      "violations_caught": []
+    },
+    {
+      "patient_id": "PT_006_CKD4_ASYMP",
+      "conditions": [
+        "CKD_Stage_4_5"
+      ],
+      "outcome": "SAFE_FIRST_PASS",
+      "attempts": 1,
+      "approved_drug": "[{\"medication_name\": \"Insulin (Basal)\", \"dose\": \"to be determined\", \"frequency\": \"as needed\"}, {\"medication_name\": \"Amlodipine\", \"dose\": \"10mg/day\", \"frequency\": \"once daily\"}]",
+      "violations_caught": []
+    }
+  ]
+}
