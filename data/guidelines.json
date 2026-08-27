@@ -1,0 +1,26 @@
+[
+  {
+    "id": "KDIGO_CKD_DM_2023_01",
+    "source": "KDIGO 2023 Clinical Practice Guideline",
+    "topic": "Metformin in Chronic Kidney Disease",
+    "text": "Metformin is recommended as first-line therapy in patients with Type 2 Diabetes and CKD when eGFR >= 45 mL/min/1.73m2 (Stage 1-3a). Metformin dose should be halved if eGFR is between 30 and 44 mL/min/1.73m2 (Stage 3b). Metformin is strictly contraindicated in advanced CKD with eGFR < 30 mL/min/1.73m2 (Stage 4 and Stage 5) due to the substantial risk of lactic acidosis."
+  },
+  {
+    "id": "KDIGO_CKD_HTN_2023_02",
+    "source": "KDIGO 2023 Blood Pressure Guideline",
+    "topic": "RAAS Blockade & Calcium Channel Blockers in Advanced CKD",
+    "text": "Initiating or escalating high-dose ACE inhibitors (e.g., Lisinopril) or ARBs in advanced CKD Stage 4 or Stage 5 (eGFR < 30 mL/min/1.73m2) requires caution due to risks of hyperkalemia and acute decline in glomerular filtration. Dihydropyridine Calcium Channel Blockers (such as Amlodipine) are preferred second-line or alternative antihypertensive agents in severe renal impairment as they do not affect renal hemodynamics or serum potassium."
+  },
+  {
+    "id": "ADA_GLY_2024_03",
+    "source": "ADA Standards of Medical Care in Diabetes 2024",
+    "topic": "Glycemic Management in Advanced Renal Impairment",
+    "text": "In patients with Type 2 Diabetes and severe CKD Stage 4 or 5 where oral antidiabetic agents like Metformin and SGLT2 inhibitors are contraindicated or insufficient, Insulin therapy (basal or prandial regimens) is safe and effective. Dose adjustments are necessary to prevent hypoglycemia due to reduced renal clearance of insulin."
+  },
+  {
+    "id": "AHA_ACC_HF_2022_04",
+    "source": "AHA/ACC/HFSA Heart Failure Guidelines",
+    "topic": "Beta-Blockers in Heart Failure and Bradycardia",
+    "text": "Beta-blockers (such as Metoprolol Succinate, Carvedilol, or Bisoprolol) are indicated in Heart Failure with reduced ejection fraction (HFrEF). However, beta-blockers are contraindicated in severe sinus bradycardia (heart rate < 50 bpm), second/third-degree AV block, and acute decompensated severe asthma."
+  }
+]

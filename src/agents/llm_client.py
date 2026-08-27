@@ -3,8 +3,12 @@ from langchain_core.prompts import ChatPromptTemplate
 from pydantic import BaseModel, Field
 
 class ClinicalSuggestion(BaseModel):
-    diagnosis_reasoning: str = Field(description="Clinical explanation grounding the choice in guidelines and safety rules.")
-    proposed_medication: str = Field(description="Exact medication name to prescribe (e.g., Amlodipine, Insulin).")
+    clinical_rationale: str = Field(
+        description="A detailed step-by-step clinical justification explaining why this medication was chosen and why alternatives were avoided based on the provided guidelines and safety constraints."
+    )
+    proposed_medication: str = Field(
+        description="Exact medication name to prescribe (e.g., Insulin, Amlodipine)."
+    )
 
 class LLMClinicalAgent:
     def __init__(self, model_name: str = "llama3.2:3b"):
@@ -41,6 +45,6 @@ class LLMClinicalAgent:
         })
 
         return {
-            "reasoning": response.diagnosis_reasoning,
+            "reasoning": response.clinical_rationale,
             "medication": response.proposed_medication.strip()
-        }
+        }   
