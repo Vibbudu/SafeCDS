@@ -1,10 +1,12 @@
 from typing import TypedDict, List, Optional
 from langgraph.graph import StateGraph, END
 from src.agents.llm_client import LLMClinicalAgent
+from src.retrieval.hybrid_retriever import HybridClinicalRetriever
 
 class AgentState(TypedDict):
     patient_id: str
     conditions: List[str]
+    retrieved_context: Optional[str]
     proposed_medication: Optional[str]
     reasoning: Optional[str]
     retries: int
@@ -13,19 +15,26 @@ class AgentState(TypedDict):
     status: str
     final_output: dict
 
-# Initialize LLM Agent instance
+# Initialize instances
 llm_agent = LLMClinicalAgent()
+retriever = HybridClinicalRetriever()
+
+def retrieve_node(state: AgentState):
+    """Retrieves relevant guideline chunks using FAISS + BM25 RRF."""
+    query = f"Management of patient with {', '.join(state['conditions'])}"
+    print(f"\n[Hybrid RAG] Retrieving guidelines for: {query}...")
+    context = retriever.retrieve_context(query, top_k=2)
+    state["retrieved_context"] = context
+    return state
 
 def generate_hypothesis_node(state: AgentState):
-    """
-    Invokes LLaMA via Ollama dynamically with the accumulated violation feedback.
-    """
     attempt = state["retries"] + 1
     print(f"\n[LLaMA Agent] Generating hypothesis (Attempt {attempt})...")
     
     response = llm_agent.generate_recommendation(
         patient_id=state["patient_id"],
         conditions=state["conditions"],
+        guidelines=state.get("retrieved_context", "None"),
         violations=state["violations"]
     )
     
@@ -37,9 +46,6 @@ def generate_hypothesis_node(state: AgentState):
     return state
 
 def verify_node(state: AgentState, verifier):
-    """
-    Neuro-symbolic verification gate using HermiT Description Logic.
-    """
     print(f"\n[HermiT Gate] Verifying '{state['proposed_medication']}' against ontology...")
     
     result = verifier.verify_prescription(
@@ -73,6 +79,7 @@ def finalize_node(state: AgentState):
         "patient_id": state["patient_id"],
         "recommended_treatment": state["proposed_medication"],
         "clinical_rationale": state["reasoning"],
+        "evidence_context": state.get("retrieved_context"),
         "total_attempts": state["retries"] + 1,
         "audit_trail": state["violations"]
     }
@@ -91,12 +98,14 @@ def escalate_node(state: AgentState):
 def build_safecds_graph(verifier):
     workflow = StateGraph(AgentState)
     
+    workflow.add_node("retrieve", retrieve_node)
     workflow.add_node("generate_hypothesis", generate_hypothesis_node)
     workflow.add_node("verify", lambda state: verify_node(state, verifier))
     workflow.add_node("finalize", finalize_node)
     workflow.add_node("escalate", escalate_node)
     
-    workflow.set_entry_point("generate_hypothesis")
+    workflow.set_entry_point("retrieve")
+    workflow.add_edge("retrieve", "generate_hypothesis")
     workflow.add_edge("generate_hypothesis", "verify")
     
     workflow.add_conditional_edges(
