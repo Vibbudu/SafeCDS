@@ -1,8 +1,1 @@
-pip install langgraph langchain langchain-community transformers peft accelerate bitsandbytes
-pip install langgraph langchain langchain-community transformers peft accelerate bitsandbytes rank-bm25 rdflib faiss-gpu
-pip install jpype1 owlready2 fastapi uvicorn pydantic pandas numpy scikit-learn
-pip install scispacy spacy open-clip-torch pillow 
-pip install https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.4/en_core_sci_sm-0.5.4.tar.gz
-pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
-pip install jpype1  
-pip install langgraph langchain langchain-community transformers peft accelerate bitsandbytes rank-bm25 rdflib faiss-cpu jpype1 owlready2 fastapi uvicorn pydantic pandas numpy scikit-learn 
+-r requirements.txt
