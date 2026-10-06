@@ -1,0 +1,42 @@
+[
+  {
+    "patient_id": "PT_001_CKD4_DM",
+    "conditions": [
+      "CKD_Stage_4_5",
+      "Type_2_Diabetes"
+    ]
+  },
+  {
+    "patient_id": "PT_002_CKD5_HTN",
+    "conditions": [
+      "CKD_Stage_4_5",
+      "Hypertension"
+    ]
+  },
+  {
+    "patient_id": "PT_003_DM_CKD1",
+    "conditions": [
+      "Type_2_Diabetes"
+    ]
+  },
+  {
+    "patient_id": "PT_004_HTN_ONLY",
+    "conditions": [
+      "Hypertension"
+    ]
+  },
+  {
+    "patient_id": "PT_005_DM_HTN_CKD4",
+    "conditions": [
+      "CKD_Stage_4_5",
+      "Type_2_Diabetes",
+      "Hypertension"
+    ]
+  },
+  {
+    "patient_id": "PT_006_CKD4_ASYMP",
+    "conditions": [
+      "CKD_Stage_4_5"
+    ]
+  }
+]
